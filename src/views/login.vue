@@ -14,6 +14,7 @@
 
 <script>
 import LoginRegist from "../components/LoginRegist";
+
 export default {
   name: "index",
   components: {LoginRegist}
