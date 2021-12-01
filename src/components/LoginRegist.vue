@@ -20,7 +20,7 @@
       ></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button @click="handleLogin('test')" type="primary" class="submit-btn">
+      <el-button @click="handleLogin('loginForm')" type="primary" class="submit-btn">
         提交
       </el-button>
     </el-form-item>
@@ -31,42 +31,27 @@
 </template>
 
 <script>
-import {ref} from "vue";
+import {loginUser, rules} from "../utils/loginValidators";
 
 export default {
   name: 'LoginRegist',
   components: {},
   setup() {
-    const loginUser = ref({
-      email: '',
-      password: ''
-    })
-    // 表单的校验规则
-    const rules = ref({
-      // 邮箱的校验规则
-      email: [{
-        type: 'email',
-        message: 'Email error...',
-        require: true,
-        trigger: 'blur'
-      }],
-      // 密码的校验规则
-      password: [{
-        require: true,
-        message: 'Please enter your password!',
-        trigger: 'blur'
-      }, {
-        min: 6,
-        max: 30,
-        message: "password's length has to be 6 to 30 characters..."
-      }]
-    })
-    // 触发登录方法
-    const handleLogin = (formName) => {
-      console.log(formName);
-    }
-    return {loginUser, rules, handleLogin}
+    return {loginUser, rules}
   },
+  methods: {
+    // 触发登录方法
+    handleLogin(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!')
+        } else {
+          console.log('error submit!')
+          return false
+        }
+      })
+    }
+  }
 }
 </script>
 
