@@ -5,7 +5,7 @@
       <el-container>
         <el-aside width="400px">Aside</el-aside>
         <el-main>
-          <login-regist/>
+          <login-form/>
         </el-main>
       </el-container>
     </el-container>
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import LoginRegist from "../components/LoginRegist";
+import LoginForm from "../components/LoginForm";
 
 export default {
   name: "index",
-  components: {LoginRegist}
+  components: {LoginForm}
 }
 </script>
 
